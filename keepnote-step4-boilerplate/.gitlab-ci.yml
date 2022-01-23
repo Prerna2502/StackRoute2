@@ -1,0 +1,18 @@
+image: mcr.microsoft.com/dotnet/core/sdk:2.2
+stages:
+  - build
+  - test
+  - publish
+build:
+  stage: build
+  script:
+    - "dotnet restore"
+    - "dotnet build"
+test:
+  stage: test
+  script:
+    - "dotnet test test/Test.csproj"
+publish:
+  stage: publish
+  script:
+    - "dotnet publish"

@@ -1,0 +1,13 @@
+{
+    "InsertScript": "db.Products.insertMany([{ProductId: \"P001\", Name: \"Laptop\", Brand: \"Dell\", Quantity: 5, Price: 32000},{ProductId: \"P002\", Name: \"Tablet\", Brand: \"Lenovo\", Quantity: 7, Price: 15000},{ProductId: \"P003\", Name: \"Camera\", Brand: \"Nikon\", Quantity: 3, Price: 22000},{ProductId: \"P004\", Name: \"Smartphone\", Brand: \"Samsung\", Quantity: 8, Price: 25000},{ProductId: \"P005\", Name: \"Speaker\", Brand: \"Bose\", Quantity: 4, Price: 12000}])",
+    "Query1": "db.Products.find({ProductId:\"P003\"})",
+    "Query2": "db.Products.find({Price:{$gt: 10000, $lt:20000}})",
+    "Query3": "db.Products.find({Quantity:{$gt:5}})",
+    "Query4": "db.Products.find({Name:{$regex:'top$'}})",
+    "Query5": "db.Products.find({Price:{$not:{$gt:20000}}})",
+    "Query6": "db.Products.find().sort({Name:-1})",
+    "Query7": "db.Products.aggregate([{$group:{_id : null, \"TotalProducts\" :{$sum: \"$Quantity\"}}}])",
+    "Query8": "db.Products.aggregate([{$project: {ProductId:1, Name:1, Brand:1, Quantity:1, Price:1, Total: {$multiply: [\"$Quantity\", \"$Price\"]}}}])",
+    "Query9": "db.Products.update({ProductId:\"P002\"},{$set: {Price:20000}})",
+    "Query10": "db.Products.deleteOne({ Brand: \"Samsung\"})"
+}
